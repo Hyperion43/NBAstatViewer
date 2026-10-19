@@ -2,14 +2,14 @@ import NBAStats_package.NBAStatLab as nba
 import csv
 import numpy as np
 
-p = nba.player("Jordan", "Michael")
+p = nba.player("Curry", "Stephen")
 
 print(p.lastName)
 print(p.firstName)
 
 nba.get_playerstats(p, career = True)
 
-print(np.sum(p.points))
+nba.stat_summary(p)
 
 
 # with open("data/PlayerStatistics.csv", newline="", encoding="utf-8") as f:
