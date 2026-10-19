@@ -24,11 +24,18 @@ class player:
 def name(self):
     return f"{self.lastName}, {self.firstName}"
 
-def stat_summary(self):
-    print("Player:", self.firstName, self.lastName)
-    print("Total Points:", np.sum(self.points))
-    print("Total Rebounds", np.sum(self.rbs))
-    print("Total Assists", np.sum(self.ast))
+def stat_summary(self, avg = False):
+    if avg == True:
+        print("Player:", self.firstName, self.lastName)
+        print(f"Points per Game: {np.mean(self.points):.2f}")
+        print(f"Rebounds per Game: {np.mean(self.rbs):.2f}")
+        print(f"Assists per Game: {np.mean(self.ast):.2f}")
+    else:
+        print("Player:", self.firstName, self.lastName)
+        print("Total Points:", np.sum(self.points))
+        print("Total Rebounds", np.sum(self.rbs))
+        print("Total Assists", np.sum(self.ast))
+
 
 
 ###
@@ -47,7 +54,7 @@ def get_playerstats(self, career = False,
     ####
 
     if year != 0 and year < 2015:
-        print("Years before the 2015-16 season not available do to github data limits, please select a valid year")
+        print("Years before the 2015-16 season not available due to github data limits, please select a valid year")
         return 0
 
     with open ("data/PlayerStatistics.csv", newline = "", encoding = "utf-8") as f:
