@@ -12,6 +12,7 @@ class player:
     def __init__(self, lastName, firstName):
         self.lastName = lastName
         self.firstName = firstName
+        self.totalgms = np.array([])
         self.points = np.array([])
         self.rbs = np.array([])
         self.ast = np.array([])
@@ -24,22 +25,29 @@ class player:
 def name(self):
     return f"{self.lastName}, {self.firstName}"
 
+###
+## Function which displays a summary of a players' statistics
+##
+###
+
 def stat_summary(self, avg = False):
     if avg == True:
         print("Player:", self.firstName, self.lastName)
+        print("Total Games: ", self.totalgms)
         print(f"Points per Game: {np.mean(self.points):.2f}")
         print(f"Rebounds per Game: {np.mean(self.rbs):.2f}")
         print(f"Assists per Game: {np.mean(self.ast):.2f}")
     else:
         print("Player:", self.firstName, self.lastName)
+        print("Total Games", self.totalgms)
         print("Total Points:", np.sum(self.points))
-        print("Total Rebounds", np.sum(self.rbs))
-        print("Total Assists", np.sum(self.ast))
+        print("Total Rebounds:", np.sum(self.rbs))
+        print("Total Assists:", np.sum(self.ast))
 
 
 
 ###
-## Function which takes player's surname, name, year etc. and displays their stats
+## Function which takes player's surname, name, year etc. and fetches their stats
 ## for that year, or for their career, depending on inputs
 ###
 def get_playerstats(self, career = False, 
@@ -95,34 +103,25 @@ def get_playerstats(self, career = False,
         self.rbs = np.array(rb)
         self.three_m = np.array(three_m)
         self.three_a = np.array(three_a)
+        self.totalgms = len(self.points)
 
-    
-
-###
-## Function which displays player information, such as position, school which they played,
-## teams they played for, etc. for each year of their career 
-###
-def get_playerinfo():
-    return 0
-
-###
-## Function which displays team information, such as year founded, year dissolved, 
-##
-###
-
-###
-## Function which displays season information, such as which team won that year, who won
-## the MVP award, etc
-###
-
-
-
-
-
-
-
-
-###
-## Function which returns all teams' ID's
-##
-###
+    if year > 2014:
+        for row in rows:
+            if row["gameDate"][:4] == str(year):
+                pts.append(float(row["points"]))
+                rb.append(float(row["reboundsTotal"]))
+                ast.append(float(row["assists"]))
+                fgm.append(float(row["fieldGoalsMade"]))
+                fga.append(float(row["fieldGoalsAttempted"]))
+                three_a.append(float(row["threePointersAttempted"]))
+                three_m.append(float(row["threePointersMade"]))
+                self.points = np.array(pts)
+        self.rbs = np.array(rb)
+        self.ast = np.array(ast)
+        self.fgm = np.array(fgm)
+        self.fga = np.array(fga)
+        self.rbs = np.array(rb)
+        self.three_m = np.array(three_m)
+        self.three_a = np.array(three_a)
+        self.totalgms = len(self.points)
+            

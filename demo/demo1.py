@@ -1,13 +1,12 @@
 import NBAStats_package.NBAStatLab as nba
 import csv
-import numpy as np
 
 p = nba.player("Curry", "Stephen")
 
 print(p.lastName)
 print(p.firstName)
 
-nba.get_playerstats(p, career = True)
+nba.get_playerstats(p, year = 2015)
 
 nba.stat_summary(p, avg = True)
 nba.stat_summary(p)
