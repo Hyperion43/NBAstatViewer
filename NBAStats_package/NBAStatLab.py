@@ -104,6 +104,8 @@ def get_playerstats(self, career = False,
         self.three_m = np.array(three_m)
         self.three_a = np.array(three_a)
         self.totalgms = len(self.points)
+        print(f"Got stats for {self.firstName} {self.lastName} for his career since 2015")
+        return
 
     if year > 2014:
         for row in rows:
@@ -124,4 +126,8 @@ def get_playerstats(self, career = False,
         self.three_m = np.array(three_m)
         self.three_a = np.array(three_a)
         self.totalgms = len(self.points)
-            
+        print(f"Got stats for {self.firstName} {self.lastName} for {year}")
+        return 
+
+
+    
