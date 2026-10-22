@@ -27,5 +27,6 @@ nba.stat_summary(p2)
 # Compare their stats, including points, assists, or rebounds, or all three (either totals, if totals == True, or averages if totals == False)
 nba.stat_compare(p, p2, pts = True, rbs = True, ast = True, totals = False)
 
-# plot their stats
+# plot a scatter plot of a player's statistics
+nba.stat_plot(p.points, label = "Steph Curry Points Over Time", ylabel = "Points", frame = "By Game")
     

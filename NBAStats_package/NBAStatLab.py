@@ -137,7 +137,12 @@ def get_playerstats(self, career = False,
         print(f"Got stats for {self.name} for {year}")
         return 
 
-def stat_compare(p1, p2, pts = False, rbs = False, ast = False, threesm = False, totals = False):
+###
+## Function which compares the stats of two players
+##
+###
+
+def stat_compare(p1, p2, pts = False, rbs = False, ast = False, totals = False):
     if totals == True:
         if pts == True:
             high = np.maximum(int(np.sum(p1.points)), int(np.sum(p2.points)))
@@ -183,5 +188,15 @@ def stat_compare(p1, p2, pts = False, rbs = False, ast = False, threesm = False,
                 print(f"The player with the most assists/game was {p2.name} with a total of {high:.2f} assists")            
     return
 
-def stat_compare_plot(p1, p2):
-    print("sumstuff will go here")
+def stat_plot(stat, label, ylabel = "Value", title = None):
+    games = np.arange(1, len(stat) + 1)
+    
+    plt.figure(figsize = (50, 10))
+    plt.scatter(games, stat, label = label, color = 'grey')
+    plt.grid(True)
+    plt.ylabel(ylabel)
+    plt.title(title)
+    plt.xlabel("Game")
+    plt.show()
+    
+    return
