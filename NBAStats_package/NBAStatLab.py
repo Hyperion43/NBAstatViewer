@@ -59,7 +59,7 @@ def stat_summary(self, avg = False):
 ## for that year, or for their career, depending on inputs
 ###
 def get_playerstats(self, career = False, 
-                    year = 0, yearsBetween = (0, 0)):
+                    year = 0):
     ####
     ### career == true will return career totals and averages
     ### if year is specified then totals and averages for that specific year will be given
@@ -198,5 +198,5 @@ def stat_plot(stat, label, ylabel = "Value", title = None):
     plt.title(title)
     plt.xlabel("Game")
     plt.show()
-    
+
     return
